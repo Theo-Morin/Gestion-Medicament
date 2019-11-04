@@ -13,58 +13,30 @@ class MedicamentController extends AbstractController
     /**
      * @Route("/medoc", name="medoc_index")
      */
-    public function listemedicament(MedicamantRepository $repo)
+    public function listemedicament()
     {
         //chercher l'ensemble des medicament et on le stock
-        $medicament=$repo->findAll();
-        return $this->render('medicament/list.html.twig', [
-            'medicament' => $medicament //on va le donner dans twig
-        ]);
+        return $this->render('medicament/list.html.twig');
     }
 
      /**
      * @Route("/medoc/{slug}", name="medoc_show")
      */
-    public function showmedicament(MedicamantRepository $repo)
+    public function showmedicament()
     {
         //chercher l'ensemble des medicament et on le stock
-        $medicament=$repo->findAll();
-        return $this->render('medicament/show.html.twig', [
-            'medicament' => $medicament //on va le donner dans twig
-        ]);
+        return $this->render('medicament/show.html.twig');
     }
-    public function ajoutemedicament(Request $request, ObjectManager $manager)
+    public function ajoutemedicament()
     {
-        $Medicament  = new Medicament();
-        $form = $this->CreateForm(MedicamentType::class, $Medicament);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-
-            $manager->persist($Medicament);
-            $manager->flush();
-            $this->addFlash(
-                "success","L'annonce <strong>{$Medicament->getLibelle()}</strong> a bien été enregistrée !"
-            );
-            return $this->redirectToRoute('Medicament_show');
-        }
-        return $this->render('Medicament/addMedicament.html.twig',[
-            'form'=> $form->createView()
-            ]);
+        return $this->render('Medicament/addMedicament.html.twig');
         }
         
      /**
      * @Route("/Medicament/delete/{id}", name="Medicament_delete")
-     * @param  Medicament $Medicament
-     * @param ObjectManager $manager
-     * @return Reponse
      */
-    public function deleteMedicament( ObjectManager $manager,Medicament $Medicament)
+    public function deleteMedicament()
     {
-            $manager->remove($Medicament);
-            $manager->flush();
-      $this->addFlash(
-            'success','Votre Medicament a été supprimé'
-        );
         return $this->redirectToRoute('Medicament_show');
   
     }
