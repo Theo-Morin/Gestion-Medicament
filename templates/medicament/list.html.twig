@@ -3,23 +3,23 @@
 {% block title %}Liste des médicaments!{% endblock %}
 
 {% block body %}
-<div class="container mt-3">
-    <h1 class="display-4">Liste des médicaments</h1>
+<div class="container mt-5">
+    <h1 class="display-4 text-center mb-5">Liste des médicaments</h1>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nom commercial</th>
-                <th scope="col">Prix échantillon</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">Nom commercial</th>
+                <th scope="col" class="text-center">Prix échantillon</th>
+                <th scope="col" class="text-right">Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr onclick="document.location='#'">
                 <th scope="row">1</th>
-                <td>Dolîprane</td>
-                <td>0.5€</td>
-                <td><a href="#"><button type="button" class="btn btn-warning"><i class="fas fa-pen"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                <td class="text-center">Dolîprane</td>
+                <td class="text-center">0.5€</td>
+                <td class="text-right"><a href="#"><button type="button" class="btn btn-warning"><i class="fas fa-pen"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
             </tr>
         </tbody>
     </table>
