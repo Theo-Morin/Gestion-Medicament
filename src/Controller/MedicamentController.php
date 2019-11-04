@@ -8,9 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class MedicamentController extends AbstractController
 {
     /**
-     * @Route("/medoc_index", name="medoc_index")
+     * @Route("/medoc", name="medoc_index")
      */
-    public function listemedicament(ArticleRepository $repo)
+    public function listemedicament(MedicamentRepository $repo)
     {
         //chercher l'ensemble des medicament et on le stock
         $medicament=$repo->findAll();
@@ -18,8 +18,9 @@ class MedicamentController extends AbstractController
             'medicament' => $medicament //on va le donner dans twig
         ]);
     }
-    /**
-     * @Route("/medoc_show", name="medoc_show")
+
+     /**
+     * @Route("/medoc/{slug}", name="medoc_show")
      */
     public function showmedicament(MedicamentRepository $repo)
     {
@@ -29,6 +30,42 @@ class MedicamentController extends AbstractController
             'medicament' => $medicament //on va le donner dans twig
         ]);
     }
+    public function ajoutemedicament(Request $request, ObjectManager $manager)
+    {
+        $Medicament  = new Medicament();
+        $form = $this->CreateForm(MedicamentType::class, $Medicament);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+
+            $manager->persist($Medicament);
+            $manager->flush();
+            $this->addFlash(
+                "success","L'annonce <strong>{$Medicament->getLibelle()}</strong> a bien été enregistrée !"
+            );
+            return $this->redirectToRoute('Medicament_show');
+        }
+        return $this->render('Medicament/addMedicament.html.twig',[
+            'form'=> $form->createView()
+            ]);
+        }
+        
+     /**
+     * @Route("/Medicament/delete/{id}", name="Medicament_delete")
+     * @param  Medicament $Medicament
+     * @param ObjectManager $manager
+     * @return Reponse
+     */
+    public function deleteMedicament( ObjectManager $manager,Medicament $Medicament)
+    {
+            $manager->remove($Medicament);
+            $manager->flush();
+      $this->addFlash(
+            'success','Votre Medicament a été supprimé'
+        );
+        return $this->redirectToRoute('Medicament_show');
+  
+    }
+
 
 
 }
