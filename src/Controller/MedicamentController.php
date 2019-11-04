@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\MedicamantRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MedicamentController extends AbstractController
 {
     /**
      * @Route("/medoc", name="medoc_index")
      */
-    public function listemedicament(MedicamentRepository $repo)
+    public function listemedicament(MedicamantRepository $repo)
     {
         //chercher l'ensemble des medicament et on le stock
         $medicament=$repo->findAll();
@@ -22,7 +25,7 @@ class MedicamentController extends AbstractController
      /**
      * @Route("/medoc/{slug}", name="medoc_show")
      */
-    public function showmedicament(MedicamentRepository $repo)
+    public function showmedicament(MedicamantRepository $repo)
     {
         //chercher l'ensemble des medicament et on le stock
         $medicament=$repo->findAll();
