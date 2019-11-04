@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MedicamentController extends AbstractController
 {
     /**
-     * @Route("/medicament", name="medicament_liste")
+     * @Route("/medoc_index", name="medoc_index")
      */
     public function listemedicament(ArticleRepository $repo)
     {
@@ -19,7 +19,7 @@ class MedicamentController extends AbstractController
         ]);
     }
     /**
-     * @Route("/medicament", name="medicament_liste")
+     * @Route("/medoc_show", name="medoc_show")
      */
     public function showmedicament(MedicamentRepository $repo)
     {
@@ -29,4 +29,6 @@ class MedicamentController extends AbstractController
             'medicament' => $medicament //on va le donner dans twig
         ]);
     }
+
+
 }
