@@ -11,7 +11,7 @@ class ComposantController extends AbstractController
     /**
      * Liste des composants
      *
-     * @Route("/composant/list", name="composant_list")
+     * @Route("/compo", name="compo_list")
      * 
      * @return response
      */
@@ -35,7 +35,7 @@ class ComposantController extends AbstractController
      /**
       * Editer un composant
       *
-      * @Route("/composant/edit", name="compo_edit")
+      * @Route("/compo/edit", name="compo_edit")
       *
       * @return response
       */
@@ -47,7 +47,7 @@ class ComposantController extends AbstractController
     /**
       * Supprimer un composant
       *
-      * @Route("/composant/delete", name="compo_delete")
+      * @Route("/compo/delete", name="compo_delete")
       *
       * @return void
       */
