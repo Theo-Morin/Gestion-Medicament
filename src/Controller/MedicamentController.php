@@ -27,18 +27,21 @@ class MedicamentController extends AbstractController
         //chercher l'ensemble des medicament et on le stock
         return $this->render('medicament/show.html.twig');
     }
+
+     /**
+     * @Route("/medoc/add", name="medoc_add")
+     */
     public function ajoutemedicament()
     {
-        return $this->render('Medicament/addMedicament.html.twig');
-        }
+        return $this->render('Medicament/add.html.twig');
+    }
         
      /**
-     * @Route("/Medicament/delete/{id}", name="Medicament_delete")
+     * @Route("/medoc/edit/{id}", name="medoc_edit")
      */
-    public function deleteMedicament()
+    public function editMedicament()
     {
-        return $this->redirectToRoute('Medicament_show');
-  
+         return $this->render('Medicament/edit.html.twig');
     }
 
 

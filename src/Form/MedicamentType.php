@@ -24,9 +24,10 @@ class MedicamentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('NomCommercial', TextType::class, $this->getConfiguration("Medicament", "Entrez votre Medicament..."))
-            ->add('prix', MoneyType::class, $this->getConfiguration("Prix", "Entrez le prix..."))
-            ->add('description',TextareaType::class, $this->getConfiguration("Description détaillé", "Présentez l'Medicament de manière détaillé..."))
+            ->add('NomCommercial', TextType::class, $this->getConfiguration("Medicament", "Entrez le nom du Medicament..."))
+            ->add("Prix de l'échantillon", MoneyType::class, $this->getConfiguration("Prix", "Entrez le prix..."))
+            ->add('Contre Indication',TextareaType::class, $this->getConfiguration("Contre indication", "Présentez les contre indications du médicament..."))
+            ->add('Effet',TextareaType::class, $this->getConfiguration("Effet du médicament", "Présentez les effets du Medicaments..."))
         ;
     }
 
