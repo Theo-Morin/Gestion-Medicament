@@ -1,17 +1,17 @@
 **HomeController** 
-    /  
-    /home  
+&nbsp;/  
+&nbsp;/home  
 **MedicamentController -> ComposerController**  
-    /medoc  
-    /medoc/add  
-    /medoc/{slug}  
-    /medoc/{slug}/edit  
+&nbsp;/medoc  
+&nbsp;/medoc/add  
+&nbsp;/medoc/{slug}  
+&nbsp;/medoc/{slug}/edit  
 **FamilleController**  
-    /medoc  
-    /medoc/add  
-    /medoc/{slug}  
-    /medoc/{slug}/edit  
+&nbsp;/medoc  
+&nbsp;/medoc/add  
+&nbsp;/medoc/{slug}  
+&nbsp;/medoc/{slug}/edit  
 **ComposantController**  
-    /compo  
-    /compo/add  
-    /compo/{slug}/edit  
+&nbsp;/compo  
+&nbsp;/compo/add  
+&nbsp;/compo/{slug}/edit  
