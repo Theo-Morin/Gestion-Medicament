@@ -1,17 +1,17 @@
-HomeController  
+**HomeController** 
     /  
     /home  
-MedicamentController -> ComposerController  
+**MedicamentController -> ComposerController**  
     /medoc  
     /medoc/add  
     /medoc/{slug}  
     /medoc/{slug}/edit  
-FamilleController  
+**FamilleController**  
     /medoc  
     /medoc/add  
     /medoc/{slug}  
     /medoc/{slug}/edit  
-ComposantController  
+**ComposantController**  
     /compo  
     /compo/add  
     /compo/{slug}/edit  
