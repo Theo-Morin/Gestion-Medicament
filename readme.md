@@ -1,4 +1,4 @@
-**HomeController** 
+**HomeController**  
 &nbsp;&nbsp;&nbsp;&nbsp;/  
 &nbsp;&nbsp;&nbsp;&nbsp;/home  
 **MedicamentController -> ComposerController**  
