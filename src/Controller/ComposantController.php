@@ -51,10 +51,7 @@ class ComposantController extends AbstractController
             $this->addFlash(
                 'success',"le composant {$composant->getNomComposant()} a bien été crée"
             );
-            return $this->redirectToRoute('compo_index',[
-                'id' => $composant->getId()
-                
-            ]);
+            return $this->redirectToRoute('compo_index');
         }
 
         return $this->render('composant/add.html.twig',[

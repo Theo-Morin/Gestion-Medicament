@@ -61,7 +61,7 @@ class FamilleController extends AbstractController
      /**
       * Editer une famille
       *
-      * @Route("/compo/{id}/edit", name="compo_edit")
+      * @Route("/famille/{id}/edit", name="famille_edit")
       *
       * @return response
       */
@@ -77,7 +77,7 @@ class FamilleController extends AbstractController
             $this->addFlash(
                 'success',"la famille {$famille->getNomFamille()} a bien été modifié"
             );
-            return $this->redirectToRoute('compo_show',[
+            return $this->redirectToRoute('famille_show',[
                 'id' => $famille->getId()
                 
             ]);
