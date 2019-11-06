@@ -103,7 +103,7 @@ class FamilleController extends AbstractController
       /**
      * Permet d'afficher une seule famille
      *
-     * @Route("/ads/{id}", name="famille_show")
+     * @Route("/famille/{id}", name="famille_show")
      * 
      * @return Response
      */
