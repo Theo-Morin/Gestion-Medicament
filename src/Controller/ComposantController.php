@@ -11,7 +11,7 @@ class ComposantController extends AbstractController
     /**
      * Liste des composants
      *
-     * @Route("/compo", name="compo_list")
+     * @Route("/compo", name="compo_index")
      * 
      * @return response
      */
@@ -23,7 +23,7 @@ class ComposantController extends AbstractController
     /**
      * Ajouter un composant
      *
-     * @Route("/composant/add", name="compo_add")
+     * @Route("/compo/add", name="compo_add")
      * 
      * @return response
      */
