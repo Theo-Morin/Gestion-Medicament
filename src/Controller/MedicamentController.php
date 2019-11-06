@@ -33,7 +33,7 @@ class MedicamentController extends AbstractController
      */
     public function ajoutemedicament()
     {
-        return $this->render('Medicament/add.html.twig');
+        return $this->render('medicament/add.html.twig');
     }
         
      /**
@@ -41,7 +41,7 @@ class MedicamentController extends AbstractController
      */
     public function editMedicament()
     {
-         return $this->render('Medicament/edit.html.twig');
+         return $this->render('medicament/edit.html.twig');
     }
 
 
