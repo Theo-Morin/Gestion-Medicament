@@ -16,9 +16,9 @@ class ComposantFixtures extends Fixture
             
             $composant = new Composant;
             
-            $nomComposant = $faker->cvr;
+            $nomComposant = $faker->firstName();
             $composant->setNomComposant($nomComposant);
-            
+
             $manager->persist($composant);
 
         }
