@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Composant;
+use App\Form\ComposantType;
 use App\Repository\ComposantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
