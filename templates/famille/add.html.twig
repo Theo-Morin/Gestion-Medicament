@@ -3,9 +3,11 @@
 {% block title %}Nouvelle famille{% endblock %}
 
 {% block body %}
-    <h2 class="display-5 text-center mt-5">Ajouter une famille</h2>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-success btn-block">Créer</button>
-    {{ form_end(form) }}
+    <div class="container">
+        <h2 class="display-5 text-center mt-5">Ajouter une famille</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-success btn-block">Créer</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
