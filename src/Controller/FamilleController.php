@@ -24,7 +24,7 @@ class FamilleController extends AbstractController
     }
 
     /**
-     * @Route("/famille/{{slug}}", name="famille_show")
+     * @Route("/famille/{slug}", name="famille_show")
      */
     public function show()
     {
@@ -32,7 +32,7 @@ class FamilleController extends AbstractController
     }
 
      /**
-     * @Route("/famille/{{slug}}/edit", name="famille_edit")
+     * @Route("/famille/{slug}/edit", name="famille_edit")
      */
     public function edit()
     {
