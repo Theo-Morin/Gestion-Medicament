@@ -47,7 +47,7 @@ class FamilleController extends AbstractController
             $this->addFlash(
                 'success',"la famille {$famille->getNomFamille()} a bien été crée"
             );
-            return $this->redirectToRoute('famille_show',[
+            return $this->redirectToRoute('famille_list',[
                 'id' => $famille->getId()
                 
             ]);
@@ -108,7 +108,7 @@ class FamilleController extends AbstractController
      * @return Response
      */
     public function show(Famille $famille){
-        return $this->render('ad/show.html.twig',[
+        return $this->render('famille/show.html.twig',[
         'famille' => $famille]);
     }
 }
