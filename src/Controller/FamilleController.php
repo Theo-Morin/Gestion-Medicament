@@ -99,4 +99,16 @@ class FamilleController extends AbstractController
       {
           return $this->render('famille/delete.html.twig');
       }
+
+      /**
+     * Permet d'afficher une seule famille
+     *
+     * @Route("/ads/{id}", name="famille_show")
+     * 
+     * @return Response
+     */
+    public function show(Famille $famille){
+        return $this->render('ad/show.html.twig',[
+        'famille' => $famille]);
+    }
 }
