@@ -47,7 +47,7 @@ class FamilleController extends AbstractController
             $this->addFlash(
                 'success',"la famille {$famille->getNomFamille()} a bien été crée"
             );
-            return $this->redirectToRoute('famille_list',[
+            return $this->redirectToRoute('famille_index',[
                 'id' => $famille->getId()
                 
             ]);
