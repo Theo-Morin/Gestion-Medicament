@@ -15,9 +15,11 @@ class ComposantController extends AbstractController
      * 
      * @return response
      */
-    public function List()
+    public function List(ComposantRepository $repo)
     {
-        return $this->render('composant/list.html.twig');
+        $composants = $repo->findAll();
+        return $this->render('composant/list.html.twig',[
+            'composants' => $composants]);
     }
 
     /**
