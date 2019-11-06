@@ -8,6 +8,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ComposantRepository")
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ * fields={"NomComposant"},
+ * message="Un autre Composant posséde deja ce nom"
+ * )
  */
 class Composant
 {
@@ -20,6 +25,7 @@ class Composant
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5,max=255,minMessage="Le titre doit faire plus de 5 caractéres",maxMessage="Le titre ne doit pas depasser plus de 255 caractéres")
      */
     private $NomComposant;
 
