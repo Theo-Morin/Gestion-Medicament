@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Composant;
 use App\Repository\ComposantRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -30,27 +33,68 @@ class ComposantController extends AbstractController
      * 
      * @return response
      */
-    public function Add()
+    public function Add(Request $request,ObjectManager $manager)
     {
-        return $this->render('composant/add.html.twig');
+        $composant= new Composant();
+        $form = $this->createForm(ComposantType::class,$composant);
+        $form->handleRequest($request);
+
+      
+        
+        
+        if($form->isSubmitted() && $form->isValid())
+        {
+      
+            $manager->persist($composant);
+            $manager->flush();
+            $this->addFlash(
+                'success',"le composant {$composant->getNomComposant()} a bien été crée"
+            );
+            return $this->redirectToRoute('compo_show',[
+                'id' => $composant->getId()
+                
+            ]);
+        }
+
+        return $this->render('composant/add.html.twig',[
+            'form'=> $form->createView()
+        ]);
     }
 
      /**
       * Editer un composant
       *
-      * @Route("/compo/{slug}/edit", name="compo_edit")
+      * @Route("/compo/{id}/edit", name="compo_edit")
       *
       * @return response
       */
-    public function Edit()
+    public function Edit(Composant $composant, Request $request, ObjectManager $manager)
     {
-        return $this->render('composant/edit.html.twig');
+        $form = $this->createForm(ComposantType::class,$composant);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+           
+            $manager->persist($composant);
+            $manager->flush();
+            $this->addFlash(
+                'success',"le composant {$composant->getNomComposant()} a bien été modifié"
+            );
+            return $this->redirectToRoute('compo_show',[
+                'id' => $composant->getId()()
+                
+            ]);
+        }
+        return $this->render('composant/edit.html.twig',[
+            'form'=>$form->createView(),
+            'composant' => $composant
+            ]);
     }
 
     /**
       * Supprimer un composant
       *
-      * @Route("/compo/{slug}/delete", name="compo_delete")
+      * @Route("/compo/{id}/delete", name="compo_delete")
       *
       * @return void
       */
