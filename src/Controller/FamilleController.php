@@ -95,9 +95,15 @@ class FamilleController extends AbstractController
       *
       * @return void
       */
-      public function Delete()
+      public function Delete(ObjectManager $manager,Famille $famille)
       {
-          return $this->render('famille/delete.html.twig');
+        $manager->remove($famille);
+        $manager->flush();
+        $this->addFlash(
+            'success',"la famille {$famille->getNomfamille()} a bien été supprimé"
+        );
+
+        return $this->redirectToRoute('famille_index');
       }
 
       /**
