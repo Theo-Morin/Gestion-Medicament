@@ -78,7 +78,7 @@ class ComposantController extends AbstractController
             $this->addFlash(
                 'success',"le composant {$composant->getNomComposant()} a bien été modifié"
             );
-            return $this->redirectToRoute('compo_show',[
+            return $this->redirectToRoute('compo_index',[
                 'id' => $composant->getId()
                 
             ]);
