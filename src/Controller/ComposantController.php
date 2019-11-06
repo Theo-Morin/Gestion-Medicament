@@ -82,7 +82,7 @@ class ComposantController extends AbstractController
                 'success',"le composant {$composant->getNomComposant()} a bien été modifié"
             );
             return $this->redirectToRoute('compo_show',[
-                'id' => $composant->getId()()
+                'id' => $composant->getId()
                 
             ]);
         }
