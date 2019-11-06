@@ -2,11 +2,15 @@
 {
     font-family: 'Poppins', sans-serif;
 }
+:root
+{
+    --first:#F69302;
+}
 header
 {
     padding-top:30px;
     padding-bottom:30px;
-    background-color:rgb(153, 0, 0);
+    background-color:var(--first);
     color:white;
 }
 header .header-title

@@ -14,11 +14,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr onclick="document.location='#'">
-                <th scope="row">1</th>
-                <td class="text-center">Dolîprane</td>
-                <td class="text-right"><a href="#"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
-            </tr>
+            {% for composant in composants %}
+                <tr>
+                    <th scope="row">{{ composant.id }}</th>
+                    <td class="text-center">{{ composant.NomComposant }}</td>
+                    <td class="text-right"><a href="path('compo_edit')"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
