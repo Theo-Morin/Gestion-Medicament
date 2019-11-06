@@ -96,8 +96,14 @@ class ComposantController extends AbstractController
       *
       * @return void
       */
-      public function Delete()
+      public function Delete(ObjectManager $manager,Composant $composant)
       {
-          return $this->render('composant/delete.html.twig');
+        $manager->remove($composant);
+        $manager->flush();
+        $this->addFlash(
+            'success',"le composant {$composant->getNomComposant()} a bien été supprimé"
+        );
+
+        return $this->redirectToRoute('famille_index');
       }
 }
