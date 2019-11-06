@@ -25,7 +25,7 @@ class Composant
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=2,max=255,minMessage="Le titre doit faire plus de 2 caractéres",maxMessage="Le titre ne doit pas depasser plus de 255 caractéres")
+     * @Assert\Length(min=2,max=255,minMessage="Le nom du composant doit faire plus de 2 caractéres",maxMessage="Le nom du composant ne doit pas depasser plus de 255 caractéres")
      */
     private $NomComposant;
 

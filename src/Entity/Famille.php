@@ -6,7 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FamilleRepository")
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ * fields={"NomFamille"},
+ * message="Une autre famille posséde deja ce nom"
+ * )
  */
+
 class Famille
 {
     /**
@@ -18,6 +24,7 @@ class Famille
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2,max=255,minMessage="Le nom de la famille doit faire plus de 2 caractéres",maxMessage="Le nom de la famille ne doit pas depasser plus de 255 caractéres")
      */
     private $NomFamille;
 
