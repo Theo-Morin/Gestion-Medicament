@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des médicaments!{% endblock %}
+{% block title %}Liste des médicaments{% endblock %}
 
 {% block body %}
 <div class="container mt-5">
@@ -19,9 +19,13 @@
                 <th scope="row">1</th>
                 <td class="text-center">Dolîprane</td>
                 <td class="text-center">0.5€</td>
-                <td class="text-right"><a href="#"><button type="button" class="btn btn-warning"><i class="fas fa-pen"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                <td class="text-right"><a href="#"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
             </tr>
         </tbody>
     </table>
 </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>td button { margin-left:5px; margin-right:5px; }</style>
 {% endblock %}
