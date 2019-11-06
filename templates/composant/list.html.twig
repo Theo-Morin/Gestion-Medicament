@@ -5,6 +5,7 @@
 {% block body %}
 <div class="container mt-5">
     <h1 class="display-4 text-center mb-5">Liste des composants</h1>
+    <a href="{{path('compo_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau composant</div></a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,7 +19,7 @@
                 <tr>
                     <th scope="row">{{ composant.id }}</th>
                     <td class="text-center">{{ composant.NomComposant }}</td>
-                    <td class="text-right"><a href="path('compo_edit')"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                    <td class="text-right"><a href="{{path('compo_edit', {'id': composant.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
                 </tr>
             {% endfor %}
         </tbody>
