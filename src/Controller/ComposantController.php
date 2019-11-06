@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\ComposantRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ComposantController extends AbstractController
 {
@@ -37,7 +38,7 @@ class ComposantController extends AbstractController
      /**
       * Editer un composant
       *
-      * @Route("/compo/edit", name="compo_edit")
+      * @Route("/compo/{slug}/edit", name="compo_edit")
       *
       * @return response
       */
@@ -49,7 +50,7 @@ class ComposantController extends AbstractController
     /**
       * Supprimer un composant
       *
-      * @Route("/compo/delete", name="compo_delete")
+      * @Route("/compo/{slug}/delete", name="compo_delete")
       *
       * @return void
       */
