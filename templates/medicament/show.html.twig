@@ -1,7 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{medicament.NomCommercial}}{% endblock %}
+{% block title %}
+    {{medicament.NomCommercial}}
+{% endblock %}
 
 {% block body %}
-
+    <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{path('famille_show', {'id':medicament.Famille.id})}}">{{medicament.Famille.NomFamille}}</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{medicament.NomCommercial}}</li>
+            </ol>
+        </nav>
+        <div class="card rounded shadow d-inline-block">
+            <div class="card-body">
+                <p class="mb-0">Prix :</p>
+                <h1>{{medicament.PrixEchantillon}}€</h1>
+            </div>
+        </div>
+        <div class="card rounded shadow d-inline-block align-top height-100">
+            <div class="card-body">
+                <p class="mb-0">Contre indication :</p>
+                <p>{{medicament.ContreIndication}}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

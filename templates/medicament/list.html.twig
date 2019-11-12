@@ -12,6 +12,7 @@
                 <th scope="col">#</th>
                 <th scope="col" class="text-center">Nom commercial</th>
                 <th scope="col" class="text-center">Prix échantillon</th>
+                <th scope="col" class="text-center">Famille</th>
                 <th scope="col" class="text-right">Action</th>
             </tr>
         </thead>
@@ -21,6 +22,7 @@
                 <th scope="row">{{medicament.id}}</th>
                 <td class="text-center">{{medicament.NomCommercial}}</td>
                 <td class="text-center">{{medicament.PrixEchantillon}}€</td>
+                <td class="text-center">{{medicament.Famille.NomFamille}}</td>
                 <td class="text-right"><a href="{{path('medoc_edit', {'id':medicament.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="{{path('medoc_delete', {'id':medicament.id})}}"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
             </tr>
         {% endfor %}
