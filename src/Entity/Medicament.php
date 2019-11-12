@@ -43,6 +43,12 @@ class Medicament
      */
     private $Effet;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Famille", inversedBy="medicaments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $famille;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +98,18 @@ class Medicament
     public function setEffet(?string $Effet): self
     {
         $this->Effet = $Effet;
+
+        return $this;
+    }
+
+    public function getFamille(): ?Famille
+    {
+        return $this->famille;
+    }
+
+    public function setFamille(?Famille $famille): self
+    {
+        $this->famille = $famille;
 
         return $this;
     }

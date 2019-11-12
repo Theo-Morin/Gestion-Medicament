@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\User;
+use App\Form\AccountType;
+use App\Form\RegistrationType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+class AccountController extends AbstractController
+{
+    /**
+     * @Route("/login", name="account_login")
+     */
+    public function login(AuthenticationUtils $utils)
+    {
+        $error = $utils->getLastAuthenticationError();
+        return $this->render('account/login.html.twig',
+        ['has_error' => $error !== null ]);
+    }
+
+    /**
+     * Permet de se deconnecter
+     * 
+     * @Route("/logout", name="account_logout")
+     * 
+     * @return void
+     */
+    public function logout()
+    {
+        
+    }
+
+    /**
+     * Permet de se registrer
+     * 
+     * @Route("/register", name="account_register")
+     * 
+     * @return response
+     */
+    public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
+    {
+        $user = new User();
+        $form = $this->createForm(RegistrationType::class , $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $hash = $encoder->encodePassword($user,$user->getHash());
+            $user->setHash($hash);
+            $manager->persist($user);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre compte a bien était crée'
+            );
+            return $this->redirectToRoute("account_login");
+        }
+        return $this->render('account/registration.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+     /**
+     * Permet de se registrer
+     * 
+     * @Route("/account/profile", name="account_profile")
+     * 
+     * @return response
+     */
+    public function profile(Request $request, ObjectManager $manager)
+    {
+        $user= $this->getUser();
+        $form=$this->createForm(AccountType::class,$user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($user);
+            $manager->flush();
+            $this->addFlash(
+                'success',
+                "Les données du profil ont été enregistée avec succes !"
+            );
+        }
+        return $this->render('account/profile.html.twig',[
+            'form'=> $form->createView()
+        ]);
+    }
+
+    /**
+     * Permet de se registrer
+     * 
+     * @Route("/account/update-password", name="account_password")
+     * 
+     * @return response
+     */
+    public function updatePassword()
+    {
+        return $this->render('account/password.html.twig');
+    }
+}
