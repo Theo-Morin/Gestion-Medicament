@@ -3,11 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MedicamantRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MedicamentRepository")
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ * fields={"NomMedicament"},
+ * message="Un autre medicament posséde deja ce nom"
+ * )
  */
-class Medicamant
+class Medicament
 {
     /**
      * @ORM\Id()
@@ -17,7 +23,7 @@ class Medicamant
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=80)
+     * @ORM\Column(type="string", length=255)
      */
     private $NomCommercial;
 
@@ -32,7 +38,7 @@ class Medicamant
     private $ContreIndication;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Effet;
 
@@ -82,7 +88,7 @@ class Medicamant
         return $this->Effet;
     }
 
-    public function setEffet(string $Effet): self
+    public function setEffet(?string $Effet): self
     {
         $this->Effet = $Effet;
 

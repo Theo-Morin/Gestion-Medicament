@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Medicamant;
+use App\Entity\Medicament;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Medicamant|null find($id, $lockMode = null, $lockVersion = null)
- * @method Medicamant|null findOneBy(array $criteria, array $orderBy = null)
- * @method Medicamant[]    findAll()
- * @method Medicamant[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Medicament|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Medicament|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Medicament[]    findAll()
+ * @method Medicament[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MedicamantRepository extends ServiceEntityRepository
+class MedicamentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Medicamant::class);
+        parent::__construct($registry, Medicament::class);
     }
 
     // /**
-    //  * @return Medicamant[] Returns an array of Medicamant objects
+    //  * @return Medicament[] Returns an array of Medicament objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class MedicamantRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Medicamant
+    public function findOneBySomeField($value): ?Medicament
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m.exampleField = :val')
