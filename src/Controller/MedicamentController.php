@@ -16,7 +16,7 @@ class MedicamentController extends AbstractController
     /**
      * Liste des Medicaments
      *
-     * @Route("/compo", name="medoc_index")
+     * @Route("/medoc", name="medoc_index")
      * 
      * @return response
      */
@@ -30,7 +30,7 @@ class MedicamentController extends AbstractController
     /**
      * Ajouter un Medicament
      *
-     * @Route("/compo/add", name="medoc_add")
+     * @Route("/medoc/add", name="medoc_add")
      * 
      * @return response
      */
@@ -62,7 +62,7 @@ class MedicamentController extends AbstractController
      /**
       * Editer un Medicament
       *
-      * @Route("/compo/{id}/edit", name="medoc_edit")
+      * @Route("/medoc/{id}/edit", name="medoc_edit")
       *
       * @return response
       */
@@ -92,7 +92,7 @@ class MedicamentController extends AbstractController
     /**
       * Supprimer un Medicament
       *
-      * @Route("/compo/{id}/delete", name="medoc_delete")
+      * @Route("/medoc/{id}/delete", name="medoc_delete")
       *
       * @return void
       */
