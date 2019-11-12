@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\MedicamentRepository")
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity(
- * fields={"NomMedicament"},
+ * fields={"NomCommercial"},
  * message="Un autre medicament posséde deja ce nom"
  * )
  */

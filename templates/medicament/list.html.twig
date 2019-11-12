@@ -16,12 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr onclick="document.location='#'">
-                <th scope="row">1</th>
-                <td class="text-center">Dolîprane</td>
-                <td class="text-center">0.5€</td>
-                <td class="text-right"><a href="#"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+        {% for medicament in medicaments %}
+            <tr onclick="document.location='{{path('medoc_show', {'id':medicament.id})}}'">
+                <th scope="row">{{medicament.id}}</th>
+                <td class="text-center">{{medicament.NomCommercial}}</td>
+                <td class="text-center">{{medicament.PrixEchantillon}}€</td>
+                <td class="text-right"><a href="{{path('medoc_edit', {'id':medicament.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="{{path('medoc_delete', {'id':medicament.id})}}"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
             </tr>
+        {% endfor %}
         </tbody>
     </table>
 </div>
