@@ -92,7 +92,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * Permet de se registrer
+     * Changer le mdp
      * 
      * @Route("/account/update-password", name="account_password")
      * 

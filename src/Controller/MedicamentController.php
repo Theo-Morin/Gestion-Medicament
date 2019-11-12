@@ -52,7 +52,8 @@ class MedicamentController extends AbstractController
                 'success',"Le médicament {$medicament->getNomCommercial()} a bien été créé"
             );
             return $this->redirectToRoute('medoc_show',[
-                'id' => $medicament->getId()
+                'id' => $medicament->getId(),
+                'famille' => $medicament->getFamille()
             ]);
         }
 
@@ -81,7 +82,8 @@ class MedicamentController extends AbstractController
                 'success',"Le médicament {$medicament->getNomCommercial()} a bien été modifié"
             );
             return $this->redirectToRoute('medoc_show',[
-                'id' => $medicament->getId()
+                'id' => $medicament->getId(),
+                'famille' => $medicament->getFamille()
             ]);
         }
         return $this->render('medicament/edit.html.twig',[
