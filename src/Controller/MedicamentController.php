@@ -14,7 +14,7 @@ class MedicamentController extends AbstractController
 {
 
     /**
-     * Liste des Medicaments
+     * Liste des medicaments
      *
      * @Route("/medoc", name="medoc_index")
      * 
@@ -22,13 +22,13 @@ class MedicamentController extends AbstractController
      */
     public function List(MedicamentRepository $repo)
     {
-        $Medicaments = $repo->findAll();
-        return $this->render('Medicament/list.html.twig',[
-            'Medicaments' => $Medicaments]);
+        $medicaments = $repo->findAll();
+        return $this->render('medicament/list.html.twig',[
+            'medicaments' => $medicaments]);
     }
 
     /**
-     * Ajouter un Medicament
+     * Ajouter un medicament
      *
      * @Route("/medoc/add", name="medoc_add")
      * 
@@ -36,8 +36,8 @@ class MedicamentController extends AbstractController
      */
     public function Add(Request $request,ObjectManager $manager)
     {
-        $Medicament= new Medicament();
-        $form = $this->createForm(MedicamentType::class,$Medicament);
+        $medicament= new medicament();
+        $form = $this->createForm(MedicamentType::class,$medicament);
         $form->handleRequest($request);
 
       
@@ -46,64 +46,76 @@ class MedicamentController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
       
-            $manager->persist($Medicament);
+            $manager->persist($medicament);
             $manager->flush();
             $this->addFlash(
-                'success',"le Medicament {$Medicament->getNomMedicament()} a bien été crée"
+                'success',"Le médicament {$medicament->getNomCommercial()} a bien été créé"
             );
             return $this->redirectToRoute('medoc_index');
         }
 
-        return $this->render('Medicament/add.html.twig',[
+        return $this->render('medicament/add.html.twig',[
             'form'=> $form->createView()
         ]);
     }
 
      /**
-      * Editer un Medicament
+      * Editer un medicament
       *
       * @Route("/medoc/{id}/edit", name="medoc_edit")
       *
       * @return response
       */
-    public function Edit(Medicament $Medicament, Request $request, ObjectManager $manager)
+    public function Edit(Medicament $medicament, Request $request, ObjectManager $manager)
     {
-        $form = $this->createForm(MedicamentType::class,$Medicament);
+        $form = $this->createForm(MedicamentType::class,$medicament);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
            
-            $manager->persist($Medicament);
+            $manager->persist($medicament);
             $manager->flush();
             $this->addFlash(
-                'success',"le Medicament {$Medicament->getNomMedicament()} a bien été modifié"
+                'success',"Le médicament {$medicament->getNomCommercial()} a bien été modifié"
             );
             return $this->redirectToRoute('medoc_index',[
-                'id' => $Medicament->getId()
+                'id' => $medicament->getId()
                 
             ]);
         }
-        return $this->render('Medicament/edit.html.twig',[
+        return $this->render('medicament/edit.html.twig',[
             'form'=>$form->createView(),
-            'Medicament' => $Medicament
+            'medicament' => $medicament
             ]);
     }
 
     /**
-      * Supprimer un Medicament
+      * Supprimer un medicament
       *
       * @Route("/medoc/{id}/delete", name="medoc_delete")
       *
       * @return void
       */
-      public function Delete(ObjectManager $manager,Medicament $Medicament)
+      public function Delete(ObjectManager $manager,Medicament $medicament)
       {
-        $manager->remove($Medicament);
+        $manager->remove($medicament);
         $manager->flush();
         $this->addFlash(
-            'success',"le Medicament {$Medicament->getNomMedicament()} a bien été supprimé"
+            'success',"Le médicament {$medicament->getNomCommercial()} a bien été supprimé"
         );
 
-        return $this->redirectToRoute('famille_index');
+        return $this->redirectToRoute('medoc_index');
       }
+
+    /**
+     * Permet d'afficher un médicament
+     *
+     * @Route("/medoc/{id}", name="medoc_show")
+     * 
+     * @return Response
+     */
+    public function show(Medicament $medicament){
+        return $this->render('medicament/show.html.twig',[
+        'medicament' => $medicament]);
+    }
 }
