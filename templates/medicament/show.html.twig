@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
+    <div class="container mt-5 pt-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -19,7 +19,7 @@
         </nav>
         <div class="row" style="margin-bottom:1rem">
             <div class="col-9">
-                <div class="card rounded shadow">
+                <div class="card rounded">
                     <div class="card-body">
                         <p class="mb-0">Contre indication :</p>
                         <h1>{{medicament.ContreIndication}}</h1>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="col-3">
-                <div class="card rounded shadow">
+                <div class="card rounded">
                     <div class="card-body">
                         <p class="mb-0">Prix :</p>
                         <h1>{{medicament.PrixEchantillon}}€</h1>
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="card rounded shadow">
+        <div class="card rounded">
             <div class="card-body">
                 <p class="mb-0">Effets :</p>
                 <h3>{{medicament.Effet}}</h3>

@@ -16,8 +16,9 @@ header
 header .header-title
 {
     margin-left:25px;
-    font-family: 'Staatliches', cursive;
-    font-size:1.3rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+
+    font-size:1.7rem;
     vertical-align:center;
 }
 header .header-menu
