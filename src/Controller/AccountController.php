@@ -20,7 +20,7 @@ class AccountController extends AbstractController
     public function login(AuthenticationUtils $utils)
     {
         $error = $utils->getLastAuthenticationError();
-        return $this->render('account/login.html.twig',
+        return $this->render('user/login.html.twig',
         ['has_error' => $error !== null ]);
     }
 
@@ -61,7 +61,7 @@ class AccountController extends AbstractController
             );
             return $this->redirectToRoute("account_login");
         }
-        return $this->render('account/registration.html.twig',[
+        return $this->render('user/registration.html.twig',[
             'form' => $form->createView()
         ]);
     }
@@ -86,7 +86,7 @@ class AccountController extends AbstractController
                 "Les données du profil ont été enregistée avec succes !"
             );
         }
-        return $this->render('account/profile.html.twig',[
+        return $this->render('user/profile.html.twig',[
             'form'=> $form->createView()
         ]);
     }
