@@ -1,9 +1,15 @@
-<header>
-    <span class="header-title">Gestion Medoc</span>
-    <span class="header-menu">
-        <a href="{{ path('home_index') }}"><span class="menu" id="index">Home</span></a>
-        <a href="{{ path('medoc_index') }}"><span class="menu" id="medicament">Médicaments</span></a>
-        <a href="{{ path('famille_index') }}"><span class="menu" id="famille">Familles</span></a>
-        <a href="{{ path('compo_index') }}"><span class="menu" id="composant">Composants</span></a>
-    </span>
-</header>
+<div class="position-fixed" style="z-index:2;">
+    <header style="z-index:2;">
+        <span class="header-title">Gestion Medoc</span>
+        <span class="header-menu">
+            <a href="{{ path('home_index') }}"><span class="menu" id="index">Home</span></a>
+            <a href="{{ path('medoc_index') }}"><span class="menu" id="medicament">Médicaments</span></a>
+            <a href="{{ path('famille_index') }}"><span class="menu" id="famille">Familles</span></a>
+            <a href="{{ path('compo_index') }}"><span class="menu" id="composant">Composants</span></a> | 
+            <a href="{{ path('account_login') }}"><span class="menu btn btn-light">Connexion</span></a>
+            <a href="{{ path('account_register') }}"><span class="menu btn btn-light">Inscription</span></a>
+        </span>
+    </header>
+    <img src="/assets/img/separator/bottom.png" class="separator" style="z-index:1;margin-top:-20px;">
+</div>
+<div style="padding-bottom:75px;"></div>

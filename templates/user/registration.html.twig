@@ -1,13 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Connection au site !
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h2 class="display-5 text-center mt-5">Créer un compte</h2>
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn btn-success btn-block">Inscription</button>
-        {{ form_end(form) }}
-    </div>
+
+	<div class="container mt-5 pt-3">
+		<div class="row">
+			<div class="col-md-3">&nbsp;</div>
+			<div class="col-md-6">
+				<div class="bg-light py-5 px-5">
+					<h3 class="text-center text-uppercase mb-3">S'inscrire à l'espace administrateur</h3>
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<button type="submit" class="btn btn-success">Inscription</button>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<a href="{{path("account_login")}}">
+									<button type="button" class="btn btn-warning float-right">Connexion</button>
+								</a>
+							</div>
+						</div>
+					</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}
