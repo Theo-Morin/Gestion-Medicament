@@ -17,16 +17,28 @@
                 <li class="breadcrumb-item active" aria-current="page">{{medicament.NomCommercial}}</li>
             </ol>
         </nav>
-        <div class="card rounded shadow d-inline-block">
-            <div class="card-body">
-                <p class="mb-0">Prix :</p>
-                <h1>{{medicament.PrixEchantillon}}€</h1>
+        <div class="row" style="margin-bottom:1rem">
+            <div class="col-9">
+                <div class="card rounded shadow">
+                    <div class="card-body">
+                        <p class="mb-0">Contre indication :</p>
+                        <h1>{{medicament.ContreIndication}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card rounded shadow">
+                    <div class="card-body">
+                        <p class="mb-0">Prix :</p>
+                        <h1>{{medicament.PrixEchantillon}}€</h1>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card rounded shadow d-inline-block align-top height-100">
+        <div class="card rounded shadow">
             <div class="card-body">
-                <p class="mb-0">Contre indication :</p>
-                <p>{{medicament.ContreIndication}}</p>
+                <p class="mb-0">Effets :</p>
+                <h1>{{medicament.Effet}}</h1>
             </div>
         </div>
     </div>

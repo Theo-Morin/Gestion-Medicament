@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title}Connexion{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="display-5 text-center mt-5">Se connecter</h2>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-success btn-block">Connexion</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
