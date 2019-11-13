@@ -78,11 +78,11 @@ class AccountController extends AbstractController
         return $this->render('account/password.html.twig');
     }
 
-    /* Permet de afficher 
+    /* Permet d'afficher le profil d'un utilisateur 
      * 
      * @Route("/profile/{id}", name="account_profile")
      * 
-     * @return response
+     * @return Response
      */
     public function profile(User $user)
     {
