@@ -67,7 +67,7 @@ class AccountController extends AbstractController
     }
 
      /**
-     * Permet de se registrer
+     * Permet de afficher 
      * 
      * @Route("/account/profile", name="account_profile")
      * 
