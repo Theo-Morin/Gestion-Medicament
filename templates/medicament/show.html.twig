@@ -9,7 +9,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="">Home</a>
+                    <a href="{{path('home_index')}}">Home</a>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="{{path('famille_show', {'id':medicament.Famille.id})}}">{{medicament.Famille.NomFamille}}</a>
@@ -38,7 +38,7 @@
         <div class="card rounded shadow">
             <div class="card-body">
                 <p class="mb-0">Effets :</p>
-                <h1>{{medicament.Effet}}</h1>
+                <h3>{{medicament.Effet}}</h3>
             </div>
         </div>
     </div>
