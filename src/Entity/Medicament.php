@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -48,6 +50,16 @@ class Medicament
      * @ORM\JoinColumn(nullable=false)
      */
     private $famille;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Composer", mappedBy="medicament", orphanRemoval=true)
+     */
+    private $lesComposers;
+
+    public function __construct()
+    {
+        $this->lesComposers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,6 +122,37 @@ class Medicament
     public function setFamille(?Famille $famille): self
     {
         $this->famille = $famille;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Composer[]
+     */
+    public function getLesComposers(): Collection
+    {
+        return $this->lesComposers;
+    }
+
+    public function addLesComposer(Composer $lesComposer): self
+    {
+        if (!$this->lesComposers->contains($lesComposer)) {
+            $this->lesComposers[] = $lesComposer;
+            $lesComposer->setMedicament($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesComposer(Composer $lesComposer): self
+    {
+        if ($this->lesComposers->contains($lesComposer)) {
+            $this->lesComposers->removeElement($lesComposer);
+            // set the owning side to null (unless already changed)
+            if ($lesComposer->getMedicament() === $this) {
+                $lesComposer->setMedicament(null);
+            }
+        }
 
         return $this;
     }
