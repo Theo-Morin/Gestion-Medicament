@@ -66,31 +66,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-     /**
-     * Permet de afficher 
-     * 
-     * @Route("/account/profile", name="account_profile")
-     * 
-     * @return response
-     */
-    public function profile(Request $request, ObjectManager $manager)
-    {
-        $user= $this->getUser();
-        $form=$this->createForm(AccountType::class,$user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $manager->persist($user);
-            $manager->flush();
-            $this->addFlash(
-                'success',
-                "Les données du profil ont été enregistée avec succes !"
-            );
-        }
-        return $this->render('user/profile.html.twig',[
-            'form'=> $form->createView()
-        ]);
-    }
-
     /**
      * Changer le mdp
      * 
@@ -102,5 +77,20 @@ class AccountController extends AbstractController
     {
         return $this->render('account/password.html.twig');
     }
+
+    /* Permet de afficher 
+     * 
+     * @Route("/profile/{id}", name="account_profile")
+     * 
+     * @return response
+     */
+    public function profile(User $user)
+    {
+        $user= $this->getUser();
+        return $this->render('user/profile.html.twig',[
+            'user'=> $user
+        ]);
+    }
+
 }
 
