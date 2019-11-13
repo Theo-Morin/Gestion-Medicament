@@ -17,6 +17,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 class User implements UserInterface
 {
+    private $roles = [];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -110,10 +112,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles()
-    {
-        return ['ROLE_USER'];
-    }
 
     public function getPassword()
     {
@@ -146,4 +144,13 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getRoles(): array
+{
+    $roles = $this->roles;
+    // guarantee every user at least has ROLE_USER
+    $roles[] = 'ROLE_USER';
+
+    return array_unique($roles);
+}
 }

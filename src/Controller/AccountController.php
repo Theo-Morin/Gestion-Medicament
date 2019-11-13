@@ -103,3 +103,4 @@ class AccountController extends AbstractController
         return $this->render('account/password.html.twig');
     }
 }
+
