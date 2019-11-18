@@ -8,6 +8,7 @@ use App\Repository\FamilleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FamilleController extends AbstractController
@@ -27,17 +28,14 @@ class FamilleController extends AbstractController
      * Ajouter une famille
      *
      * @Route("/famille/add", name="famille_add")
-     * 
+     * @IsGranted("ROLE_USER")
      * @return response
      */
     public function Add(Request $request,ObjectManager $manager)
     {
         $famille= new Famille();
         $form = $this->createForm(FamilleType::class,$famille);
-        $form->handleRequest($request);
-
-      
-        
+        $form->handleRequest($request); 
         
         if($form->isSubmitted() && $form->isValid())
         {
@@ -62,7 +60,7 @@ class FamilleController extends AbstractController
       * Editer une famille
       *
       * @Route("/famille/{id}/edit", name="famille_edit")
-      *
+      * @IsGranted("ROLE_USER")
       * @return response
       */
     public function Edit(Famille $famille, Request $request, ObjectManager $manager)
@@ -92,7 +90,7 @@ class FamilleController extends AbstractController
       * Supprimer une famille
       *
       * @Route("/famille/{id}/delete", name="famille_delete")
-      *
+      * @IsGranted("ROLE_USER")
       * @return void
       */
       public function Delete(ObjectManager $manager,Famille $famille)

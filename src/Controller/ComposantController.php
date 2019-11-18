@@ -8,6 +8,7 @@ use App\Repository\ComposantRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ComposantController extends AbstractController
@@ -31,6 +32,7 @@ class ComposantController extends AbstractController
      * Ajouter un composant
      *
      * @Route("/compo/add", name="compo_add")
+     * @IsGranted("ROLE_USER")
      * 
      * @return response
      */
@@ -40,9 +42,6 @@ class ComposantController extends AbstractController
         $form = $this->createForm(ComposantType::class,$composant);
         $form->handleRequest($request);
 
-      
-        
-        
         if($form->isSubmitted() && $form->isValid())
         {
       
@@ -63,6 +62,8 @@ class ComposantController extends AbstractController
       * Editer un composant
       *
       * @Route("/compo/{id}/edit", name="compo_edit")
+      *
+      * @IsGranted("ROLE_USER")
       *
       * @return response
       */
@@ -93,7 +94,7 @@ class ComposantController extends AbstractController
       * Supprimer un composant
       *
       * @Route("/compo/{id}/delete", name="compo_delete")
-      *
+      * @IsGranted("ROLE_USER")
       * @return void
       */
       public function Delete(ObjectManager $manager,Composant $composant)

@@ -22,7 +22,7 @@
                 <div class="card rounded">
                     <div class="card-body">
                         <p class="mb-0">Contre indication :</p>
-                        <h1>{{medicament.ContreIndication}}</h1>
+                        <h3>{{medicament.ContreIndication}}</h3>
                     </div>
                 </div>
             </div>
@@ -41,5 +41,22 @@
                 <h3>{{medicament.Effet}}</h3>
             </div>
         </div>
+        <h2 class="display-5 text-center mt-5 mb-3">Les composants</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col" class="text-center">Composant</th>
+					<th scope="col" class="text-center">Quantité</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for composer in medicament.lesComposers %}
+					<tr>
+						<td class="text-center">{{composer.composant.NomComposant}}</td>
+						<td class="text-center">{{composer.quantite}}g</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
     </div>
 {% endblock %}

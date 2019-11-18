@@ -4,8 +4,8 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h1 class="display-4 text-center mb-5">Liste des médicaments</h1>
-    <a href="{{path('medoc_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau médicament</div></a>
+    <h2 class="display-5 text-center mb-5">Liste des médicaments</h2>
+    {% if is_granted('ROLE_USER') %}<a href="{{path('medoc_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau médicament</div></a>{% endif %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -13,7 +13,7 @@
                 <th scope="col" class="text-center">Nom commercial</th>
                 <th scope="col" class="text-center">Prix échantillon</th>
                 <th scope="col" class="text-center">Famille</th>
-                <th scope="col" class="text-right">Action</th>
+                {% if is_granted('ROLE_USER') %}<th scope="col" class="text-right">Action</th>{% endif %}
             </tr>
         </thead>
         <tbody>
@@ -23,7 +23,7 @@
                 <td class="text-center">{{medicament.NomCommercial}}</td>
                 <td class="text-center">{{medicament.PrixEchantillon}}€</td>
                 <td class="text-center">{{medicament.Famille.NomFamille}}</td>
-                <td class="text-right"><a href="{{path('medoc_edit', {'id':medicament.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="{{path('medoc_delete', {'id':medicament.id})}}"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                {% if is_granted('ROLE_USER') %}<td class="text-right"><a href="{{path('medoc_edit', {'id':medicament.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="{{path('medoc_delete', {'id':medicament.id})}}"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>{% endif %}
             </tr>
         {% endfor %}
         </tbody>

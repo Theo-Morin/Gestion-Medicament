@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ famille.NomFamille }}
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h2 class="display-5 text-center mb-5">{{ famille.NomFamille }}</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col" class="text-center">Nom commercial</th>
+					<th scope="col" class="text-center">Prix échantillon</th>
+					{% if is_granted('ROLE_USER') %}
+						<th scope="col" class="text-right">Action</th>
+					{% endif %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for medicament in famille.medicaments %}
+					<tr onclick="document.location='{{path('medoc_show', {'id':medicament.id})}}'">
+						<th scope="row">{{medicament.id}}</th>
+						<td class="text-center">{{medicament.NomCommercial}}</td>
+						<td class="text-center">{{medicament.PrixEchantillon}}€</td>
+						{% if is_granted('ROLE_USER') %}
+							<td class="text-right">
+								<a href="{{path('medoc_edit', {'id':medicament.id})}}">
+									<button type="button" class="btn btn-warning">
+										<i class="fas fa-pencil-alt"></i>
+									</button>
+								</a>
+								<a href="{{path('medoc_delete', {'id':medicament.id})}}">
+									<button type="button" class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+									</button>
+								</a>
+							</td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

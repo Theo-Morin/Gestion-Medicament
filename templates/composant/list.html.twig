@@ -4,14 +4,14 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h1 class="display-4 text-center mb-5">Liste des composants</h1>
-    <a href="{{path('compo_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau composant</div></a>
+    <h2 class="display-5 text-center mb-5">Liste des composants</h2>
+    {% if is_granted('ROLE_USER') %}<a href="{{path('compo_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau composant</div></a>{% endif %}
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col" class="text-center">Nom</th>
-                <th scope="col" class="text-right">Action</th>
+                {% if is_granted('ROLE_USER') %}<th scope="col" class="text-right">Action</th>{% endif %}
             </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@
                 <tr>
                     <th scope="row">{{ composant.id }}</th>
                     <td class="text-center">{{ composant.NomComposant }}</td>
-                    <td class="text-right"><a href="{{path('compo_edit', {'id': composant.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                    {% if is_granted('ROLE_USER') %}<td class="text-right"><a href="{{path('compo_edit', {'id': composant.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>{% endif %}
                 </tr>
             {% endfor %}
         </tbody>

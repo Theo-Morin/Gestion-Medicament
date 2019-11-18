@@ -45,3 +45,13 @@ header a:visited
 {
     font-weight:bold;
 }
+
+.btn-success
+{
+    margin-bottom:15px;
+}
+
+.margin-top
+{
+    padding-top:150px;
+}

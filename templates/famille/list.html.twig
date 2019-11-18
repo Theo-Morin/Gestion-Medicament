@@ -4,14 +4,14 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h1 class="display-4 text-center mb-5">Liste des familles de médicament</h1>
-    <a href="{{path('famille_add')}}"><div class="button btn btn-success float-right" type="button">Nouvelle famille</div></a>
+    <h2 class="display-5 text-center mb-5">Liste des familles de médicament</h2>
+    {% if is_granted('ROLE_USER') %}<a href="{{path('famille_add')}}"><div class="button btn btn-success float-right" type="button">Nouvelle famille</div></a>{% endif %}
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col" class="text-center">Nom</th>
-                <th scope="col" class="text-right">Action</th>
+                {% if is_granted('ROLE_USER') %}<th scope="col" class="text-right">Action</th>{% endif %}
             </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@
                 <tr onclick="document.location='{{path('famille_show', {'id':famille.id})}}'">
                     <th scope="row">{{ famille.id }}</th>
                     <td class="text-center">{{ famille.NomFamille }}</td>
-                    <td class="text-right"><a href="{{path('famille_edit', {'id': famille.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>
+                    {% if is_granted('ROLE_USER') %}<td class="text-right"><a href="{{path('famille_edit', {'id': famille.id})}}"><button type="button" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></button></a><a href="#"><button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button></a></td>{% endif %}
                 </tr>
             {% endfor %}
         </tbody>

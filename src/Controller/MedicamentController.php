@@ -8,6 +8,7 @@ use App\Repository\MedicamentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MedicamentController extends AbstractController
@@ -31,7 +32,7 @@ class MedicamentController extends AbstractController
      * Ajouter un medicament
      *
      * @Route("/medoc/add", name="medoc_add")
-     * 
+     * @IsGranted("ROLE_USER")
      * @return response
      */
     public function Add(Request $request,ObjectManager $manager)
@@ -39,13 +40,9 @@ class MedicamentController extends AbstractController
         $medicament= new medicament();
         $form = $this->createForm(MedicamentType::class,$medicament);
         $form->handleRequest($request);
-
-      
-        
         
         if($form->isSubmitted() && $form->isValid())
         {
-      
             $manager->persist($medicament);
             $manager->flush();
             $this->addFlash(
@@ -65,7 +62,7 @@ class MedicamentController extends AbstractController
       * Editer un medicament
       *
       * @Route("/medoc/{id}/edit", name="medoc_edit")
-      *
+      * @IsGranted("ROLE_USER")
       * @return response
       */
     public function Edit(Medicament $medicament, Request $request, ObjectManager $manager)
@@ -74,7 +71,6 @@ class MedicamentController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
-           
             $manager->persist($medicament);
             $manager->flush();
             $this->addFlash(
@@ -92,7 +88,7 @@ class MedicamentController extends AbstractController
 
     /**
       * Supprimer un medicament
-      *
+      * @IsGranted("ROLE_USER")
       * @Route("/medoc/{id}/delete", name="medoc_delete")
       *
       * @return void

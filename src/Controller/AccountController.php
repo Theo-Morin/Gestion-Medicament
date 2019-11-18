@@ -8,6 +8,7 @@ use App\Form\RegistrationType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -28,6 +29,7 @@ class AccountController extends AbstractController
      * Permet de se deconnecter
      * 
      * @Route("/logout", name="account_logout")
+     * @IsGranted("ROLE_USER")
      * 
      * @return void
      */
@@ -71,6 +73,8 @@ class AccountController extends AbstractController
      * 
      * @Route("/account/update-password", name="account_password")
      * 
+     * @IsGranted("ROLE_USER")
+     * 
      * @return response
      */
     public function updatePassword()
@@ -81,6 +85,7 @@ class AccountController extends AbstractController
     /* Permet d'afficher le profil d'un utilisateur 
      * 
      * @Route("/profile/{id}", name="account_profile")
+     * @IsGranted("ROLE_USER")
      * 
      * @return Response
      */
