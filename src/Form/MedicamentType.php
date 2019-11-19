@@ -22,7 +22,7 @@ class MedicamentType extends ApplicationType
             ->add('NomCommercial',TextType::class,$this->getConfiguration("Nom commercial","Ecrivez ici le nom commercial ..."))
             ->add('PrixEchantillon',MoneyType::class,$this->getConfiguration("Prix de l'échantillon","Ecrivez ici le prix de l'échantillon ..."))
             ->add('ContreIndication',TextType::class,$this->getConfiguration("Contre indication","Ecrivez ici la contre indication ..."))
-            ->add('Effet',TextType::class,$this->getConfiguration("Effet","Ecrivez ici le ou les effets du médicaments ..."))
+            ->add('Effet',TextType::class,$this->getConfiguration("Effet","Ecrivez ici le ou les effets du médicament ..."))
             ->add('famille',EntityType::class,['class'=> Famille::class,'choice_label' =>'Choisissez la famille...', 'choice_label' =>'NomFamille'],$this->getConfiguration("Famille","Choisissez une famille..."))
         ;
     }
