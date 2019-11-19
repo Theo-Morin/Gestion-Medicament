@@ -21,5 +21,5 @@ class FamilleFixtures extends Fixture
 
             $manager->persist($famille);
         }
-        $manager->flush();
+        $manager->flush(); 
 }   }
