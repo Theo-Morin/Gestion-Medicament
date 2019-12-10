@@ -5,7 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container mt-5 pt-3">
+    <div class="container mt-2 pt-3">
+        {% if is_granted('ROLE_USER') %}
+        <div class="row">
+            <div class="col">
+                <a href="{{path('medoc_edit', {'id':medicament.id})}}"><button class="btn btn-warning btn-block"><i class="fas fa-pencil-alt"></i> Edit</button></a><br/><br/>
+            </div>
+            <div class="col">
+                <a href="{{path('medoc_delete', {'id':medicament.id})}}"><button class="btn btn-danger btn-block"><i class="fas fa-trash"></i> Delete</button></a>
+            </div>
+        </div>
+        {% endif %}
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -53,7 +63,7 @@
 				{% for composer in medicament.lesComposers %}
 					<tr>
 						<td class="text-center">{{composer.composant.NomComposant}}</td>
-						<td class="text-center">{{composer.quantite}}g</td>
+						<td class="text-center">{{composer.quantite}}mg</td>
 					</tr>
 				{% endfor %}
 			</tbody>

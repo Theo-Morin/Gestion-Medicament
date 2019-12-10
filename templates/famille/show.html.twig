@@ -6,8 +6,22 @@
 
 {% block body %}
 	<div class="container mt-5">
-		<h2 class="display-5 text-center mb-5">{{ famille.NomFamille }}</h2>
-		<table class="table table-striped">
+		<h2 class="display-5 text-center mb-2">{{ famille.NomFamille }}</h2>
+        {% if is_granted('ROLE_USER') %}
+			<a href="{{path('famille_delete', {'id':famille.id})}}"><button class="btn btn-danger float-right mb-2"><i class="fas fa-trash"></i> Delete</button></a>
+			<a href="{{path('famille_edit', {'id':famille.id})}}"><button class="btn btn-warning float-right mr-2 mb-2"><i class="fas fa-pencil-alt"></i> Edit</button></a><br/><br/>
+		{% endif %}
+		<nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{path('home_index')}}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    {{famille.NomFamille}}
+                </li>
+            </ol>
+        </nav>
+		<table id="table" class="table table-striped">
 			<thead>
 				<tr>
 					<th scope="col">#</th>

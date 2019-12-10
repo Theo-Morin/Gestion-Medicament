@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modifier le médicament{% endblock %}
-
+{% form_theme form 'medicament/_collection.html.twig' %}
 {% block body %}
     <div class="container">
         <h2 class="display-5 text-center mt-5">Modifier le médicament</h2>
@@ -10,4 +10,7 @@
             <button class="btn btn-success btn-block">Modifier</button>
         {{ form_end(form) }}
     </div>
+{% endblock %}
+{% block javascripts %}
+<script src="/assets/js/form-medoc.js"></script>
 {% endblock %}

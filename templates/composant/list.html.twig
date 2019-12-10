@@ -5,8 +5,8 @@
 {% block body %}
 <div class="container mt-5">
     <h2 class="display-5 text-center mb-5">Liste des composants</h2>
-    {% if is_granted('ROLE_USER') %}<a href="{{path('compo_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau composant</div></a>{% endif %}
-    <table class="table table-striped">
+    {% if is_granted('ROLE_USER') %}<a href="{{path('compo_add')}}"><div class="button btn btn-success float-right" type="button">Nouveau composant</div></a><br/><br/><br/>{% endif %}
+    <table id="table" class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>

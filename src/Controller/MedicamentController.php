@@ -43,6 +43,13 @@ class MedicamentController extends AbstractController
         
         if($form->isSubmitted() && $form->isValid())
         {
+            //exit($medicament->getLesComposers());
+            foreach($medicament->getLesComposers() as $lesComposers){
+                //exit(print_r($lesComposers));
+                $lesComposers->setMedicament($medicament);
+                $manager->persist($lesComposers);
+            }
+
             $manager->persist($medicament);
             $manager->flush();
             $this->addFlash(
@@ -71,6 +78,11 @@ class MedicamentController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
+            foreach($medicament->getLesComposers() as $lesComposers){
+                //exit(print_r($lesComposers));
+                $lesComposers->setMedicament($medicament);
+                $manager->persist($lesComposers);
+            }
             $manager->persist($medicament);
             $manager->flush();
             $this->addFlash(

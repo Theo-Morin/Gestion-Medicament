@@ -4,7 +4,7 @@
 }
 :root
 {
-    --first:#F69302;
+    --first:#1791CF;
 }
 header
 {
@@ -54,4 +54,14 @@ header a:visited
 .margin-top
 {
     padding-top:150px;
+}
+
+.dataTables_filter label
+{
+    float:right;
+}
+
+.pagination
+{
+    float:right;
 }
