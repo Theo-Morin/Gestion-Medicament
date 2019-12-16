@@ -4,6 +4,7 @@ $('#add_composant').click(function(){
     $('#medicament_lesComposers').append(tmpl);
      $('#widgets-counter').val(index+1);
     handleDeletebutton();
+    deleteLabel();
 });
 
 function handleDeletebutton() {
@@ -17,5 +18,12 @@ function updateCounter()
     const count = $('#medicament_lesComposers div.form-group').Lenght;
     $('#widget_counter').val(count);
 }
+
+function deleteLabel()
+{
+    $(".col-form-label").css("display", "none");
+}
+
 updateCounter();
 handleDeletebutton();
+deleteLabel();
