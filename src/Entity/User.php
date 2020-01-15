@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity("Email",message="Un autre utilisateur est deja inscrite avec cette adresse mail")
+ * @UniqueEntity("Email",message="Un autre utilisateur est deja inscrit avec cette adresse mail")
  */
 
 class User implements UserInterface
