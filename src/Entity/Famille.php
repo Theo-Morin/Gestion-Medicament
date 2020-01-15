@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity(
  * fields={"NomFamille"},
- * message="Une autre famille posséde deja ce nom"
+ * message="Une autre famille possède deja ce nom"
  * )
  */
 
@@ -28,7 +28,7 @@ class Famille
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=2,max=255,minMessage="Le nom de la famille doit faire plus de 2 caractéres",maxMessage="Le nom de la famille ne doit pas depasser plus de 255 caractéres")
+     * @Assert\Length(min=2,max=255,minMessage="Le nom de la famille doit faire plus de 2 caractères",maxMessage="Le nom de la famille ne doit pas depasser plus de 255 caractères")
      */
     private $NomFamille;
 
