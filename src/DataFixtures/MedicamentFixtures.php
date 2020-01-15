@@ -18,6 +18,7 @@ class MedicamentFixtures extends Fixture
             $nom = utf8_encode(substr($value->title, 0, 79));
             $medicament->setNomCommercial($nom);
             $medicament->setPrixEchantillon(mt_rand(0.2,50));
+            $medicament->setFamille(mt_rand(1,3));
             $medicament->setContreIndication($faker->sentence());
             $medicament->setEffet($faker->sentence());
         }
