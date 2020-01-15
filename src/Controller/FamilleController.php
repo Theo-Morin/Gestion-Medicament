@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FamilleController extends AbstractController
 {
     /**
+     * Permet d'afficher la liste des familles
      * @Route("/famille", name="famille_index")
      */
     public function index(FamilleRepository $repo)
