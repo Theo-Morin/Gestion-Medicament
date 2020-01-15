@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\HasLifecycleCallbacks
  * @UniqueEntity(
  * fields={"NomComposant"},
- * message="Un autre Composant posséde deja ce nom"
+ * message="Un autre Composant possède deja ce nom"
  * )
  */
 class Composant
@@ -25,7 +25,7 @@ class Composant
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=2,max=255,minMessage="Le nom du composant doit faire plus de 2 caractéres",maxMessage="Le nom du composant ne doit pas depasser plus de 255 caractéres")
+     * @Assert\Length(min=2,max=255,minMessage="Le nom du composant doit faire plus de 2 caractères",maxMessage="Le nom du composant ne doit pas depasser plus de 255 caractéres")
      */
     private $NomComposant;
 
