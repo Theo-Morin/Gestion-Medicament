@@ -39,7 +39,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * Permet de se registrer
+     * Permet de créer un compte
      * 
      * @Route("/register", name="account_register")
      * 
@@ -59,7 +59,7 @@ class AccountController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Votre compte a bien était crée'
+                'Votre compte a bien était créé'
             );
             return $this->redirectToRoute("account_login");
         }
@@ -69,7 +69,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * Changer le mdp
+     * Changer le mot de passe
      * 
      * @Route("/account/update-password", name="account_password")
      * 
