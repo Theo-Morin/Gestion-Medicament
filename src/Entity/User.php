@@ -50,7 +50,7 @@ class User implements UserInterface
     private $hash;
 
     /**
-     * @Assert\EqualTo(propertyPath="hash", message="Vous n'avez pas correctement saisi votre mot de pass")
+     * @Assert\EqualTo(propertyPath="hash", message="Vous n'avez pas correctement saisi votre mot de passe")
      */
     public $passwordConfirm;
 
